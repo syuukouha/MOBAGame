@@ -24,7 +24,7 @@ public class SoundManager : Singleton<SoundManager>
 	    bgmAudioSource.playOnAwake = true;
 	    seAudioSource.loop = false;
 	    seAudioSource.playOnAwake = false;
-	}
+    }
 
     #region 背景音乐
     public float BGMVolume

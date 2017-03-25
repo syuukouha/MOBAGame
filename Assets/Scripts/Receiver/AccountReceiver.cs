@@ -32,6 +32,8 @@ namespace Assets.Scripts.Receiver
             {
                 case 0:
                     //成功
+                    UIManager.Instance.HideUI(Paths.RES_UIAccount);
+                    UIManager.Instance.ShowUI(Paths.RES_UIMain);
                     break;
                 case -1:
                     //玩家在线

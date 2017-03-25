@@ -6,7 +6,7 @@ using MOBACommon.Dto;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AccountView : MonoBehaviour,IResourceListener {
+public class AccountView : UIBase,IResourceListener {
     #region 注册模块
     [Header("Register")]
     [SerializeField]
@@ -70,17 +70,33 @@ public class AccountView : MonoBehaviour,IResourceListener {
         _passwordRegister.text = null;
     }
     #endregion
+    #region UIBase
+    public override string UIName()
+    {
+        return Paths.RES_UIAccount;
+    }
 
-    private AudioClip bgmAudioClip;
-    private AudioClip enterAudioClip;
-    private AudioClip clickAudioClip;
-
-    void Start()
+    public override void Init()
     {
         ResourcesManager.Instance.Load(Paths.RES_UISOUND + "Hero", typeof(AudioClip), this);
         ResourcesManager.Instance.Load(Paths.RES_UISOUND + "EnterGame", typeof(AudioClip), this);
         ResourcesManager.Instance.Load(Paths.RES_UISOUND + "Click", typeof(AudioClip), this);
     }
+
+    public override void OnDestory()
+    {
+        bgmAudioClip = null;
+        enterAudioClip = null;
+        clickAudioClip = null;
+    }
+    #endregion
+
+
+    
+    private AudioClip bgmAudioClip;
+    private AudioClip enterAudioClip;
+    private AudioClip clickAudioClip;
+
     public void OnLoaded(string assetPath, object asset)
     {
         AudioClip clip = asset as AudioClip;

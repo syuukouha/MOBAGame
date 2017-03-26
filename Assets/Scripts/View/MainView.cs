@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using MOBACommon.Codes;
 using MOBACommon.Dto;
 using UnityEngine;
@@ -24,8 +25,20 @@ public class MainView : UIBase,IResourceListener
     private Text lvText;
     [SerializeField]
     private Slider expBar;
+
+    [Header("Friend")]
     [SerializeField]
-    private GameObject friends;
+    private Transform friendSpawn;
+    [SerializeField]
+    private GameObject friendPrefab;
+    [SerializeField]
+    private InputField addFriendInputField;
+    [SerializeField]
+    private GameObject friendList;
+    [SerializeField]
+    private AddFriendRequestView addFriendRequestView;
+
+    private List<FriendView> friendViews = new List<FriendView>();
 
     private AudioClip clickAudioClip;
 
@@ -96,7 +109,71 @@ public class MainView : UIBase,IResourceListener
         nameText.text = playerDto.Name;
         lvText.text = playerDto.Lv.ToString();
         expBar.value = playerDto.Exp/(playerDto.Lv*100.0f);
-         
+        //加载好友列表
+        FriendDto[] friendDtos = playerDto.Friends;
+        friendViews.Clear();
+        GameObject go = null;
+        foreach (FriendDto friendDto in friendDtos)
+        {
+            go = Instantiate(friendPrefab);
+            go.transform.SetParent(friendSpawn);
+            FriendView friendView = go.GetComponent<FriendView>();
+            friendView.InitView(friendDto.ID, friendDto.Name, friendDto.IsOnline);
+            friendViews.Add(friendView);
+        }
     }
+
+
+    #region 好友模块
+    /// <summary>
+    /// 添加好友按钮点击事件
+    /// </summary>
+    public void OnAddFriendClick()
+    {
+        SoundManager.Instance.PlaySE(clickAudioClip);
+        if (string.IsNullOrEmpty(addFriendInputField.text))
+            return;
+        //发送添加好友请求
+        PhotonManager.Instance.Request(OperationCode.PlayerCode, OpPlayer.AddFriend, addFriendInputField.text);
+        addFriendInputField.text = string.Empty;
+    }
+    /// <summary>
+    /// 显示加好友面板
+    /// </summary>
+    public void ShowAddFriendRequestPanel(PlayerDto playerDto)
+    {
+        addFriendRequestView.gameObject.SetActive(true);
+        addFriendRequestView.UpdateView(playerDto);
+    }
+    /// <summary>
+    /// 同意拒绝的点击事件
+    /// </summary>
+    /// <param name="result"></param>
+    public void OnResultClick(bool result)
+    {
+        PhotonManager.Instance.Request(OperationCode.PlayerCode, OpPlayer.AddFriendToClient, result,addFriendRequestView.ID);
+        addFriendRequestView.gameObject.SetActive(false);
+    }
+    /// <summary>
+    /// 好友列表按钮点击事件
+    /// </summary>
+    public void OnFriendListClick()
+    {
+        friendList.SetActive(!friendList.activeInHierarchy);
+    }
+    /// <summary>
+    /// 更新好友在线状态
+    /// </summary>
+    /// <param name="friendID">好友ID</param>
+    /// <param name="isOnLine">是否在线</param>
+    public void UpdateFriendView(int friendID, bool isOnLine)
+    {
+        foreach (FriendView friendView in friendViews)
+        {
+            if (friendView.ID == friendID)
+                friendView.UpdateView(isOnLine);
+        }
+    }
+    #endregion
 
 }

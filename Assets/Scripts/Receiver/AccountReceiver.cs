@@ -38,13 +38,13 @@ namespace Assets.Scripts.Receiver
                 case -1:
                     //玩家在线
                     Tips.Instance.Show(message,null);
-                    GetComponent<AccountView>()._loginButton.interactable = true;
+                    GetComponent<AccountView>().LoginInteractable = true;
                     GetComponent<AccountView>().ClearText();
                     break;
                 case -2:
                     //账号密码错误
                     Tips.Instance.Show(message, null);
-                    GetComponent<AccountView>()._loginButton.interactable = true;
+                    GetComponent<AccountView>().LoginInteractable = true;
                     GetComponent<AccountView>().ClearText();
                     break;
             }

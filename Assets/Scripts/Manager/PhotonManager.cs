@@ -9,7 +9,9 @@ using UnityEngine;
 public class PhotonManager : Singleton<PhotonManager>,IPhotonPeerListener
 {
     #region Receivers
-
+    /// <summary>
+    /// 账号
+    /// </summary>
     private AccountReceiver _accountReceiver;
 
     public AccountReceiver accountReceiver
@@ -19,6 +21,20 @@ public class PhotonManager : Singleton<PhotonManager>,IPhotonPeerListener
             if (_accountReceiver == null)
                 _accountReceiver = FindObjectOfType<AccountReceiver>();
             return _accountReceiver;
+        }
+    }
+    /// <summary>
+    /// 角色
+    /// </summary>
+    private PlayerReceiver _playerReceiver;
+
+    public PlayerReceiver playerReceiver
+    {
+        get
+        {
+            if (_playerReceiver == null)
+                _playerReceiver = FindObjectOfType<PlayerReceiver>();
+            return _playerReceiver;
         }
     }
     #endregion
@@ -105,7 +121,10 @@ public class PhotonManager : Singleton<PhotonManager>,IPhotonPeerListener
             case OperationCode.AccountCode:
                 accountReceiver.OnReceive(subCode, operationResponse);
                 break;
-                
+            case OperationCode.PlayerCode:
+                playerReceiver.OnReceive(subCode, operationResponse);
+                break;
+
         }
     }
 

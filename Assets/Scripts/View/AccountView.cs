@@ -7,7 +7,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class AccountView : UIBase,IResourceListener {
-    #region 注册模块
+
+    #region 变量定义
     [Header("Register")]
     [SerializeField]
     private InputField _accountRegister;
@@ -15,6 +16,23 @@ public class AccountView : UIBase,IResourceListener {
     private InputField _passwordRegister;
     [SerializeField]
     private InputField _passwordCheckRegister;
+
+    [Header("Login")]
+    [SerializeField]
+    private InputField _accountLogin;
+    [SerializeField]
+    private InputField _passwordLogin;
+    [SerializeField]
+    private Button _loginButton;
+
+    private AudioClip bgmAudioClip;
+    private AudioClip enterAudioClip;
+    private AudioClip clickAudioClip;
+
+    #endregion
+
+    #region 注册模块
+
     /// <summary>
     /// 注册点击事件
     /// </summary>
@@ -32,13 +50,11 @@ public class AccountView : UIBase,IResourceListener {
     }
     #endregion
     #region 登录模块
-    [Header("Login")]
-    [SerializeField]
-    private InputField _accountLogin;
-    [SerializeField]
-    private InputField _passwordLogin;
 
-    public  Button _loginButton;
+    public bool LoginInteractable
+    {
+        set { _loginButton.interactable = value; }
+    }
 
     /// <summary>
     /// 进入游戏点击事件
@@ -58,7 +74,7 @@ public class AccountView : UIBase,IResourceListener {
         };
         //发送请求
         PhotonManager.Instance.Request(OperationCode.AccountCode, OpAccount.Login, JsonMapper.ToJson(dto));
-        _loginButton.interactable = false;
+        LoginInteractable = false;
     }
 
     public void ClearText()
@@ -92,11 +108,13 @@ public class AccountView : UIBase,IResourceListener {
     #endregion
 
 
-    
-    private AudioClip bgmAudioClip;
-    private AudioClip enterAudioClip;
-    private AudioClip clickAudioClip;
 
+
+    /// <summary>
+    /// 加载回调
+    /// </summary>
+    /// <param name="assetPath"></param>
+    /// <param name="asset"></param>
     public void OnLoaded(string assetPath, object asset)
     {
         AudioClip clip = asset as AudioClip;

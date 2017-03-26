@@ -28,7 +28,7 @@ public class InputNavigator : MonoBehaviour, ISelectHandler, IDeselectHandler
             }
             if (next != null)
             {
-                InputField inputfield = next.GetComponent<InputField>();
+                //InputField inputfield = next.GetComponent<InputField>();
                 _system.SetSelectedGameObject(next.gameObject, new BaseEventData(_system));
             }
             else

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using MOBACommon.Codes;
+using MOBACommon.Dto;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -90,9 +91,12 @@ public class MainView : UIBase,IResourceListener
     /// <summary>
     /// 更新显示
     /// </summary>
-    public void UpdateView(string name,string lv,int exp)
+    public void UpdateView(PlayerDto playerDto)
     {
-        
+        nameText.text = playerDto.Name;
+        lvText.text = playerDto.Lv.ToString();
+        expBar.value = playerDto.Exp/(playerDto.Lv*100.0f);
+         
     }
 
 }

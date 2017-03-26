@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using Assets.Scripts.Receiver;
 using ExitGames.Client.Photon;
+using LitJson;
 using MOBACommon.Codes;
+using MOBACommon.Dto;
 using UnityEngine;
 
 public class PlayerReceiver : MonoBehaviour,IReceiver
@@ -18,7 +20,7 @@ public class PlayerReceiver : MonoBehaviour,IReceiver
                 OnCreatePlayer();
                 break;
             case OpPlayer.Online:
-                OnPlayerOnLine();
+                OnPlayerOnLine(JsonMapper.ToObject<PlayerDto>(response[0].ToString()));
                 break;
         }
     }
@@ -50,7 +52,11 @@ public class PlayerReceiver : MonoBehaviour,IReceiver
     /// <summary>
     /// 角色上线
     /// </summary>
-    private void OnPlayerOnLine()
+    private void OnPlayerOnLine(PlayerDto playerDto)
     {
+        //保存服务器传来的玩家数据
+        GameData.Player = playerDto;
+        //更新显示
+        GetComponent<MainView>().UpdateView(playerDto);
     }
 }

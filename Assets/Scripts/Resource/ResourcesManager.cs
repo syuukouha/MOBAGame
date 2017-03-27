@@ -33,6 +33,9 @@ public class ResourcesManager : Singleton<ResourcesManager> {
                     {
                         loadAssets.Listeners[j].OnLoaded(loadAssets.AssetPath, loadAssets.GetAsset);
                     }
+                    //添加到已经加载的字典里
+                    loadedAssets.Add(loadAssets.AssetPath, loadAssets.GetAsset);
+                    //从正在加载列表里移除
                     loadingList.RemoveAt(i);
                 }
             }

@@ -21,9 +21,11 @@ public class FriendView : MonoBehaviour
         this.ID = id;
         nameText.text = name;
         stateText.text = isOnline ? "状态:在线" : "状态:离线";
+        stateText.color = isOnline ? Color.green : Color.red;
     }
     public void UpdateView(bool isOnline)
     {
         stateText.text = isOnline ? "状态:在线" : "状态:离线";
+        stateText.color = isOnline ? Color.green : Color.red;
     }
 }

@@ -39,7 +39,22 @@ public class MainView : UIBase,IResourceListener
     private AddFriendRequestView addFriendRequestView;
 
     private List<FriendView> friendViews = new List<FriendView>();
+    [Header("Match")]
+    [SerializeField]
+    private Button singleMatchButton;
+    [SerializeField]
+    private Button multiMatchButton;
+    [SerializeField]
+    private MatchView matchView;
 
+    public bool SingleMatchInteractable
+    {
+        set { singleMatchButton.interactable = value; }
+    }
+    public bool MultiMatchInteractable
+    {
+        set { multiMatchButton.interactable = value; }
+    }
     private AudioClip clickAudioClip;
 
     #endregion
@@ -123,7 +138,6 @@ public class MainView : UIBase,IResourceListener
         }
     }
 
-
     #region 好友模块
     /// <summary>
     /// 添加好友按钮点击事件
@@ -173,6 +187,40 @@ public class MainView : UIBase,IResourceListener
             if (friendView.ID == friendID)
                 friendView.UpdateView(isOnLine);
         }
+    }
+    #endregion
+    #region 匹配模块
+    /// <summary>
+    /// 匹配开始
+    /// </summary>
+    public void OnStartMatch(bool isSingle)
+    {
+        SoundManager.Instance.PlaySE(clickAudioClip);
+        if (isSingle)
+        {
+            //发起请求
+            PhotonManager.Instance.Request(OperationCode.PlayerCode, OpPlayer.MatchStart, GameData.Player.ID);
+            //显示匹配面板
+            matchView.StartMatch();
+        }
+        else
+        {
+            //发起请求
+
+            //TODO
+        }
+
+    }
+    /// <summary>
+    /// 取消匹配
+    /// </summary>
+    public void OnStopMatch()
+    {
+        SoundManager.Instance.PlaySE(clickAudioClip);
+        //发起请求
+        PhotonManager.Instance.Request(OperationCode.PlayerCode, OpPlayer.MatchStop, GameData.Player.ID);
+        //关闭匹配面板
+        matchView.StopMatch();
     }
     #endregion
 

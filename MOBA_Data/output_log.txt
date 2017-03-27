@@ -25,59 +25,17 @@ Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\MOBACommon.dll (this message is
 Loading E:\u3d\MOBA\MOBA_Data\Managed\MOBACommon.dll into Unity Child Domain
 Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\Photon3Unity3D.dll (this message is harmless)
 Loading E:\u3d\MOBA\MOBA_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.171 seconds
+- Completed reload, in  0.025 seconds
 Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.130612 ms
-Initialize engine version: 5.5.2f1 (3829d7f588f3)
-GfxDevice: creating device client; threaded=1
-Direct3D:
-    Version:  Direct3D 11.0 [level 11.1]
-    Renderer: AMD Radeon R9 200 Series (ID=0x6810)
-    Vendor:   ATI
-    VRAM:     2029 MB
-    Driver:   21.19.137.514
-Begin MonoManager ReloadAssembly
-Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading E:\u3d\MOBA\MOBA_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading E:\u3d\MOBA\MOBA_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading E:\u3d\MOBA\MOBA_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading E:\u3d\MOBA\MOBA_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
-Loading E:\u3d\MOBA\MOBA_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
-Loading E:\u3d\MOBA\MOBA_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
-Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\LitJson.dll (this message is harmless)
-Loading E:\u3d\MOBA\MOBA_Data\Managed\LitJson.dll into Unity Child Domain
-Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\MOBACommon.dll (this message is harmless)
-Loading E:\u3d\MOBA\MOBA_Data\Managed\MOBACommon.dll into Unity Child Domain
-Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\Photon3Unity3D.dll (this message is harmless)
-Loading E:\u3d\MOBA\MOBA_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.027 seconds
-Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\System.dll (this message is harmless)
-desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
-<RI> Initializing input.
-<RI> Input initialized.
+UnloadTime: 0.962556 ms
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 256c -> priority: 1 
-  Thread -> id: 2b9c -> priority: 1 
-Connect
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-<RI> Initialized touch support.
-UnloadTime: 0.997191 ms
-Setting up 2 worker threads for Enlighten.
-  Thread -> id: 28f0 -> priority: 1 
-  Thread -> id: 27a0 -> priority: 1 
+  Thread -> id: 3bc8 -> priority: 1 
+  Thread -> id: 3244 -> priority: 1 
 Connect
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
@@ -98,113 +56,27 @@ OperationResponse 1: ReturnCode: 0 (创建成功). Parameters: {(Byte)80=(Byte)1
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-OperationResponse 1: ReturnCode: 0 (上线成功). Parameters: {(Byte)80=(Byte)2, (Byte)0=(String){"ID":0,"Name":"123","Lv":1,"Exp":0,"Power":2000,"WinCount":0,"LoseCount":0,"RunCount":0,"HeroID":[0,1],"Friends":[]}}
+OperationResponse 1: ReturnCode: 0 (上线成功). Parameters: {(Byte)80=(Byte)2, (Byte)0=(String){"ID":1,"Name":"2","Lv":1,"Exp":0,"Power":2000,"WinCount":0,"LoseCount":0,"RunCount":0,"HeroID":[0,1],"Friends":[]}}
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-OperationResponse 0: ReturnCode: 0 (注册成功). Parameters: {(Byte)80=(Byte)1}
+OperationResponse 1: ReturnCode: 0 (开始匹配成功). Parameters: {(Byte)80=(Byte)6}
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-OperationResponse 0: ReturnCode: 0 (登录成功). Parameters: {(Byte)80=(Byte)0}
+OperationResponse 1: ReturnCode: 1 (开始选人). Parameters: {(Byte)80=(Byte)7}
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-OperationResponse 1: ReturnCode: -2 (角色不存在). Parameters: {(Byte)80=(Byte)0}
+OperationResponse 1: ReturnCode: 0 (开始匹配成功). Parameters: {(Byte)80=(Byte)6}
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-OperationResponse 1: ReturnCode: 0 (创建成功). Parameters: {(Byte)80=(Byte)1}
+OperationResponse 1: ReturnCode: 1 (开始选人). Parameters: {(Byte)80=(Byte)7}
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-OperationResponse 1: ReturnCode: 0 (上线成功). Parameters: {(Byte)80=(Byte)2, (Byte)0=(String){"ID":1,"Name":"\u3092\u611B\u306B","Lv":1,"Exp":0,"Power":2000,"WinCount":0,"LoseCount":0,"RunCount":0,"HeroID":[0,1],"Friends":[]}}
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-OperationResponse 1: ReturnCode: 0 (是否添加好友?). Parameters: {(Byte)80=(Byte)4, (Byte)0=(String){"ID":1,"Name":"\u3092\u611B\u306B","Lv":1,"Exp":0,"Power":2000,"WinCount":0,"LoseCount":0,"RunCount":0,"HeroID":[0,1],"Friends":[]}}
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-OperationResponsO 1: ReturnCodponse 1: Return功). Para���rs: 功BytParameter0: (B(Byte, (ByBeyte)4,r(ing){"I("String){"ID":0,"Name":B1\u306Bv":1,":1,"Exp":0,"Pr":r2:00000,"WinCount0,"LosLoseCount":RunCount":0,:H0,"Her:ID"0:[0,1],"Friends":[{":ID":0,e"Name"09123611I\sOnline":true}]}}:
- t
-rue}]}}
- 
-(Fileuilds C:/buuity/blave/unitifacts/generaacts/gmner/runtimommonugBinding/DeeugBipdpn Linen cpp L
-i
-ne: 51)
-
-Disconnect
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-OperationResponse 1: ReturnCode: 1 (好友玩家下线). Parameters: {(Byte)80=(Byte)5, (Byte)0=(Int32)1}
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Initialize engine version: 5.5.2f1 (3829d7f588f3)
-GfxDevice: creating device client; threaded=1
-Direct3D:
-    Version:  Direct3D 11.0 [level 11.1]
-    Renderer: AMD Radeon R9 200 Series (ID=0x6810)
-    Vendor:   ATI
-    VRAM:     2029 MB
-    Driver:   21.19.137.514
-Begin MonoManager ReloadAssembly
-Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading E:\u3d\MOBA\MOBA_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading E:\u3d\MOBA\MOBA_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading E:\u3d\MOBA\MOBA_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading E:\u3d\MOBA\MOBA_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
-Loading E:\u3d\MOBA\MOBA_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
-Loading E:\u3d\MOBA\MOBA_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
-Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\LitJson.dll (this message is harmless)
-Loading E:\u3d\MOBA\MOBA_Data\Managed\LitJson.dll into Unity Child Domain
-Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\MOBACommon.dll (this message is harmless)
-Loading E:\u3d\MOBA\MOBA_Data\Managed\MOBACommon.dll into Unity Child Domain
-Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\Photon3Unity3D.dll (this message is harmless)
-Loading E:\u3d\MOBA\MOBA_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.028 seconds
-Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\System.dll (this message is harmless)
-desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
-<RI> Initializing input.
-<RI> Input initialized.
-<RI> Initialized touch support.
-UnloadTime: 0.878528 ms
-Setting up 2 worker threads for Enlighten.
-  Thread -> id: 2cd4 -> priority: 1 
-  Thread -> id: 28d4 -> priority: 1 
-Connect
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-OperationResponse 0: ReturnCode: 0 (登录成功). Parameters: {(Byte)80=(Byte)0}
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-OperationResponse 1: ReturnCode: 0 (角色存在). Parameters: {(Byte)80=(Byte)0}
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-OperationResponse 1: ReturnCode: 0 (上线成功). Parameters: {(Byte)80=(Byte)2, (Byte)0=(String){"ID":1,"Name":"\u3092\u611B\u306B","Lv":1,"Exp":0,"Power":2000,"WinCount":0,"LoseCount":0,"RunCount":0,"HeroID":[0,1],"Friends":[{"ID":0,"Name":"123","IsOnline":true}]}}
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-OperationResponse 1: ReturnCode: 0 (好友玩家上线). Parameters: {(Byte)80=(Byte)5, (Byte)0=(Int32)1}
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Disconnect
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-OperationResponse 1: ReturnCode: 1 (好友玩家下线). Parameters: {(Byte)80=(Byte)5, (Byte)0=(Int32)1}
+OperationResponse 1: ReturnCode: 1 (添加成功). Parameters: {(Byte)80=(Byte)4, (Byte)0=(String){"ID":1,"Name":"2","Lv":1,"Exp":0,"Power":2000,"WinCount":0,"LoseCount":0,"RunCount":0,"HeroID":[0,1],"Friends":[{"ID":0,"Name":"1","IsOnline":true}]}}
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 

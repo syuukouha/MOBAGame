@@ -25,17 +25,17 @@ Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\MOBACommon.dll (this message is
 Loading E:\u3d\MOBA\MOBA_Data\Managed\MOBACommon.dll into Unity Child Domain
 Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\Photon3Unity3D.dll (this message is harmless)
 Loading E:\u3d\MOBA\MOBA_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.025 seconds
+- Completed reload, in  0.173 seconds
 Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: E:\u3d\MOBA\MOBA_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 0.962556 ms
+UnloadTime: 1.781753 ms
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 3bc8 -> priority: 1 
-  Thread -> id: 3244 -> priority: 1 
+  Thread -> id: 1f1c -> priority: 1 
+  Thread -> id: 4618 -> priority: 1 
 Connect
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
@@ -56,7 +56,7 @@ OperationResponse 1: ReturnCode: 0 (创建成功). Parameters: {(Byte)80=(Byte)1
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-OperationResponse 1: ReturnCode: 0 (上线成功). Parameters: {(Byte)80=(Byte)2, (Byte)0=(String){"ID":1,"Name":"2","Lv":1,"Exp":0,"Power":2000,"WinCount":0,"LoseCount":0,"RunCount":0,"HeroID":[0,1],"Friends":[]}}
+OperationResponse 1: ReturnCode: 0 (上线成功). Parameters: {(Byte)80=(Byte)2, (Byte)0=(String){"ID":4,"Name":"8","Lv":1,"Exp":0,"Power":2000,"WinCount":0,"LoseCount":0,"RunCount":0,"HeroID":[0,1],"Friends":[]}}
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
@@ -64,19 +64,11 @@ OperationResponse 1: ReturnCode: 0 (开始匹配成功). Parameters: {(Byte)80=(
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-OperationResponse 1: ReturnCode: 1 (开始选人). Parameters: {(Byte)80=(Byte)7}
+OperationResponse 1: ReturnCode: 1 (是否进入选人界面(10秒)). Parameters: {(Byte)80=(Byte)7}
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-OperationResponse 1: ReturnCode: 0 (开始匹配成功). Parameters: {(Byte)80=(Byte)6}
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-OperationResponse 1: ReturnCode: 1 (开始选人). Parameters: {(Byte)80=(Byte)7}
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-OperationResponse 1: ReturnCode: 1 (添加成功). Parameters: {(Byte)80=(Byte)4, (Byte)0=(String){"ID":1,"Name":"2","Lv":1,"Exp":0,"Power":2000,"WinCount":0,"LoseCount":0,"RunCount":0,"HeroID":[0,1],"Friends":[{"ID":0,"Name":"1","IsOnline":true}]}}
+OperationResponse 2: ReturnCode: 0 (获取房间信息). Parameters: {(Byte)80=(Byte)4, (Byte)0=(String)[{"PlayerID":5,"PlayerName":"7","HeroID":-1,"IsEnter":true,"IsReady":false}], (Byte)1=(String)[{"PlayerID":4,"PlayerName":"8","HeroID":-1,"IsEnter":true,"IsReady":false}]}
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 

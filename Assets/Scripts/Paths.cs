@@ -17,4 +17,12 @@ public class Paths
     /// 主界面UI资源路径
     /// </summary>
     public const string RES_UIMain = "UI/UIMain";
+    /// <summary>
+    /// 选人界面UI资源路径
+    /// </summary>
+    public const string RES_UISelect = "UI/UISelect";
+    /// <summary>
+    /// 英雄头像UI资源路径
+    /// </summary>
+    public const string RES_UIHeroHead = "HeadUI/";
 }

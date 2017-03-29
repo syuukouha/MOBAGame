@@ -10,6 +10,7 @@ using UnityEngine;
 public class PlayerReceiver : MonoBehaviour,IReceiver
 {
     private MainView mainView;
+
     void Start()
     {
         mainView = GetComponent<MainView>();
@@ -35,6 +36,9 @@ public class PlayerReceiver : MonoBehaviour,IReceiver
                 break;
             case OpPlayer.FriendOnlineState:
                 OnFriendOnlineState(response.ReturnCode, (int) response[0]);
+                break;
+            case OpPlayer.MatchComplete:
+                OnMatchComplete();
                 break;
         }
     }
@@ -120,5 +124,12 @@ public class PlayerReceiver : MonoBehaviour,IReceiver
                 mainView.UpdateFriendView(friendID, false);
                 break;
         }
+    }
+    /// <summary>
+    /// 匹配成功
+    /// </summary>
+    private void OnMatchComplete()
+    {
+        mainView.OnCompleteMatch();
     }
 }

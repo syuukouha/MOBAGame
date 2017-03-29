@@ -46,6 +46,8 @@ public class MainView : UIBase,IResourceListener
     private Button multiMatchButton;
     [SerializeField]
     private MatchView matchView;
+    [SerializeField]
+    private MatchCompleteView matchCompleteView;
 
     public bool SingleMatchInteractable
     {
@@ -221,6 +223,24 @@ public class MainView : UIBase,IResourceListener
         PhotonManager.Instance.Request(OperationCode.PlayerCode, OpPlayer.MatchStop, GameData.Player.ID);
         //关闭匹配面板
         matchView.StopMatch();
+    }
+    /// <summary>
+    /// 完成匹配
+    /// </summary>
+    public void OnCompleteMatch()
+    {
+        //关闭匹配面板
+        OnStopMatch();
+        //显示匹配完成面板
+        matchCompleteView.Show();
+    }
+
+    public void OnSureButtonClick()
+    {
+        //隐藏主界面UI
+        UIManager.Instance.HideUI(Paths.RES_UIMain);
+        //显示选人界面UI
+        UIManager.Instance.ShowUI(Paths.RES_UISelect);
     }
     #endregion
 

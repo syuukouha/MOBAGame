@@ -14,7 +14,7 @@ public class PhotonManager : Singleton<PhotonManager>,IPhotonPeerListener
     /// </summary>
     private AccountReceiver _accountReceiver;
 
-    public AccountReceiver accountReceiver
+    public AccountReceiver AccountReceiver
     {
         get
         {
@@ -28,13 +28,27 @@ public class PhotonManager : Singleton<PhotonManager>,IPhotonPeerListener
     /// </summary>
     private PlayerReceiver _playerReceiver;
 
-    public PlayerReceiver playerReceiver
+    public PlayerReceiver PlayerReceiver
     {
         get
         {
             if (_playerReceiver == null)
                 _playerReceiver = FindObjectOfType<PlayerReceiver>();
             return _playerReceiver;
+        }
+    }
+    /// <summary>
+    /// 选人
+    /// </summary>
+    private SelectReceiver _selectReceiver;
+
+    public SelectReceiver SelectReceiver
+    {
+        get
+        {
+            if (_selectReceiver == null)
+                _selectReceiver = FindObjectOfType<SelectReceiver>();
+            return _selectReceiver;
         }
     }
     #endregion
@@ -119,10 +133,13 @@ public class PhotonManager : Singleton<PhotonManager>,IPhotonPeerListener
         switch (opCode)
         {
             case OperationCode.AccountCode:
-                accountReceiver.OnReceive(subCode, operationResponse);
+                AccountReceiver.OnReceive(subCode, operationResponse);
                 break;
             case OperationCode.PlayerCode:
-                playerReceiver.OnReceive(subCode, operationResponse);
+                PlayerReceiver.OnReceive(subCode, operationResponse);
+                break;
+            case OperationCode.SelectCode:
+                SelectReceiver.OnReceive(subCode, operationResponse);
                 break;
 
         }

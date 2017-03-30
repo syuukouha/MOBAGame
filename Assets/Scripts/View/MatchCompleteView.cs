@@ -29,7 +29,7 @@ public class MatchCompleteView : MonoBehaviour
                 Hide();
 	        }
 	    }
-	    timerText.text = "匹配成功,请在" + (int) timer + "秒后确定进入房间";
+	    timerText.text = "请在" + (int) timer + "秒内确定进入房间";
 	}
 
     public void Show()

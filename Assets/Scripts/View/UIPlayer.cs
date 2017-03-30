@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using MOBACommon.Config;
 using MOBACommon.Dto;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIPlayer : MonoBehaviour,IResourceListener
+public class UIPlayer : MonoBehaviour
 {
     private Text nameText;
     private Text stateText;
@@ -15,13 +16,6 @@ public class UIPlayer : MonoBehaviour,IResourceListener
     private Sprite noConnectSprite;
     private Sprite noSelectSprite;
 
-    void Awake()
-    {
-        ResourcesManager.Instance.Load(Paths.RES_UIHeroHead + "noSelect", typeof(Sprite), this);
-        ResourcesManager.Instance.Load(Paths.RES_UIHeroHead + "noConnect", typeof(Sprite), this);
-        ResourcesManager.Instance.Load(Paths.RES_UIHeroHead + "Ahri_Square_0", typeof(Sprite), this);
-        ResourcesManager.Instance.Load(Paths.RES_UIHeroHead + "LeeSin_Square_0", typeof(Sprite), this);
-    }
 	// Use this for initialization
 	void Start ()
 	{
@@ -29,7 +23,10 @@ public class UIPlayer : MonoBehaviour,IResourceListener
 	    stateText = transform.FindChild("StateText").GetComponent<Text>();
 	    headImage = transform.FindChild("HeroHead").GetComponent<Image>();
 	    bgImage = GetComponent<Image>();
-	}
+
+	    noConnectSprite = ResourcesManager.Instance.GetAsset(Paths.RES_UIHeroHead + "noConnect") as Sprite;
+        noSelectSprite = ResourcesManager.Instance.GetAsset(Paths.RES_UIHeroHead + "noSelect") as Sprite;
+    }
 
     public void UpdateView(SelectModel selectModel)
     {
@@ -44,7 +41,8 @@ public class UIPlayer : MonoBehaviour,IResourceListener
         {
             if (selectModel.HeroID != -1) //-1代表没有选择英雄
             {
-                //TODO
+                //更新选择英雄头像
+                headImage.sprite = ResourcesManager.Instance.GetAsset(Paths.RES_UIHeroHead +HeroData.GetHeroModel(selectModel.HeroID).Name) as Sprite;
             }
             else
             {
@@ -63,19 +61,6 @@ public class UIPlayer : MonoBehaviour,IResourceListener
                 bgImage.color = Color.white;
                 stateText.text = "正在选择...";
             }
-        }
-    }
-
-    public void OnLoaded(string assetPath, object asset)
-    {
-        switch (assetPath)
-        {
-            case Paths.RES_UIHeroHead + "noSelect":
-                noSelectSprite = asset as Sprite;
-                break;
-            case Paths.RES_UIHeroHead + "noConnect":
-                noConnectSprite = asset as Sprite;
-                break;
         }
     }
 }

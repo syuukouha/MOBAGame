@@ -57,13 +57,17 @@ public class UIManager : Singleton<UIManager>, IResourceListener
     /// <param name="uiName"></param>
     public void HideUI(string uiName)
     {
-        if (!UIDictionary.ContainsKey(uiName))
+        if (UIDictionary.ContainsKey(uiName))
         {
             UIBase uiBase = UIDictionary[uiName];
             uiBase.OnHide();
-            DeleteUI(uiBase);
         }
     }
+    /// <summary>
+    /// 加载完成回调
+    /// </summary>
+    /// <param name="assetPath"></param>
+    /// <param name="asset"></param>
     public void OnLoaded(string assetPath, object asset)
     {
         var ui = Instantiate(asset as GameObject);

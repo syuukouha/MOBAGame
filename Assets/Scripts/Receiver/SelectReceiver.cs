@@ -34,22 +34,30 @@ public class SelectReceiver :MonoBehaviour,IReceiver
                 OnGetInfo();
                 break;
             case OpSelect.Enter:
-                int playerID = (int) response[0];
-                OnEnter(playerID);
+                OnEnter(response.ReturnCode,(int)response[0]);
+                break;
+            case OpSelect.Cancel:
+                OnCancel();
+                break;
+            case OpSelect.Select:
+                OnSelect((int) response[0], (int) response[1]);
+                break;
+            case OpSelect.Ready:
+                OnReady((int)response[0]);
                 break;
         }
     }
     /// <summary>
-    /// 当玩家进入
+    /// 玩家准备
     /// </summary>
-    /// <param name="currentTeamId"></param>
-    private void OnEnter(int playerID)
+    /// <param name="playerID"></param>
+    private void OnReady(int playerID)
     {
         foreach (SelectModel redTeamSelectModel in _redTeamSelectModels)
         {
             if (redTeamSelectModel.PlayerID == playerID)
             {
-                redTeamSelectModel.IsEnter = true;
+                redTeamSelectModel.IsReady = true;
                 OnGetInfo();
                 return;
             }
@@ -58,12 +66,87 @@ public class SelectReceiver :MonoBehaviour,IReceiver
         {
             if (blueTeamSelectModel.PlayerID == playerID)
             {
-                blueTeamSelectModel.IsEnter = true;
+                blueTeamSelectModel.IsReady = true;
                 OnGetInfo();
                 return;
             }
         }
+    }
 
+    /// <summary>
+    /// 英雄选择
+    /// </summary>
+    /// <param name="playerID"></param>
+    /// <param name="heroID"></param>
+    private void OnSelect(int playerID, int heroID)
+    {
+        foreach (SelectModel redTeamSelectModel in _redTeamSelectModels)
+        {
+            if (redTeamSelectModel.PlayerID == playerID)
+            {
+                redTeamSelectModel.HeroID = heroID;
+                OnGetInfo();
+                return;
+            }
+        }
+        foreach (SelectModel blueTeamSelectModel in _blueTeamSelectModels)
+        {
+            if (blueTeamSelectModel.PlayerID == playerID)
+            {
+                blueTeamSelectModel.HeroID = heroID;
+                OnGetInfo();
+                return;
+            }
+        }
+    }
+
+    /// <summary>
+    /// 取消进入房间
+    /// </summary>
+    private void OnCancel()
+    {
+        //隐藏选人界面
+        UIManager.Instance.HideUI(Paths.RES_UISelect);
+        //显示主界面
+        UIManager.Instance.ShowUI(Paths.RES_UIMain);
+    }
+
+    /// <summary>
+    /// 玩家进入房间
+    /// </summary>
+    /// <param name="responseReturnCode">0代表进入房间成功，1代表全部人进入房间</param>
+    /// <param name="playerID"></param>
+    private void OnEnter(short responseReturnCode, int playerID)
+    {
+        switch (responseReturnCode)
+        {
+            case 0:
+                //有玩家进入房间
+                foreach (SelectModel redTeamSelectModel in _redTeamSelectModels)
+                {
+                    if (redTeamSelectModel.PlayerID == playerID)
+                    {
+                        redTeamSelectModel.IsEnter = true;
+                        OnGetInfo();
+                        return;
+                    }
+                }
+                foreach (SelectModel blueTeamSelectModel in _blueTeamSelectModels)
+                {
+                    if (blueTeamSelectModel.PlayerID == playerID)
+                    {
+                        blueTeamSelectModel.IsEnter = true;
+                        OnGetInfo();
+                        return;
+                    }
+                }
+                break;
+            case 1:
+                //全部玩家进入房间
+                //初始化玩家拥有的英雄
+                selectView.InitSelectHeroPanel(GameData.Player.HeroID);
+                break;
+        }   
     }
 
     /// <summary>
@@ -73,6 +156,7 @@ public class SelectReceiver :MonoBehaviour,IReceiver
     /// <param name="blueTeamSelectModels"></param>
     private void OnGetInfo()
     {
+        //更新显示
         selectView.UpdateView(_currentTeamID, _redTeamSelectModels, _blueTeamSelectModels);
     }
     /// <summary>

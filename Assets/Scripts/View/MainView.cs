@@ -6,7 +6,7 @@ using MOBACommon.Dto;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainView : UIBase,IResourceListener
+public class MainView : UIBase
 {
 
     #region 变量定义
@@ -80,15 +80,6 @@ public class MainView : UIBase,IResourceListener
 
     } 
     #endregion
-    /// <summary>
-    /// 加载回调
-    /// </summary>
-    /// <param name="assetPath"></param>
-    /// <param name="asset"></param>
-    public void OnLoaded(string assetPath, object asset)
-    {
-        
-    }
     #region 创建模块
 
     /// <summary>
@@ -134,6 +125,7 @@ public class MainView : UIBase,IResourceListener
         {
             go = Instantiate(friendPrefab);
             go.transform.SetParent(friendSpawn);
+            go.transform.localScale = Vector3.one;
             FriendView friendView = go.GetComponent<FriendView>();
             friendView.InitView(friendDto.ID, friendDto.Name, friendDto.IsOnline);
             friendViews.Add(friendView);
@@ -237,6 +229,7 @@ public class MainView : UIBase,IResourceListener
 
     public void OnSureButtonClick()
     {
+        SoundManager.Instance.PlaySE(clickAudioClip);
         //隐藏主界面UI
         UIManager.Instance.HideUI(Paths.RES_UIMain);
         //显示选人界面UI

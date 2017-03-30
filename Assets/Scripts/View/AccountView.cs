@@ -6,7 +6,8 @@ using MOBACommon.Dto;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AccountView : UIBase,IResourceListener {
+public class AccountView : UIBase
+{
 
     #region 变量定义
     [Header("Register")]
@@ -94,9 +95,11 @@ public class AccountView : UIBase,IResourceListener {
 
     public override void Init()
     {
-        ResourcesManager.Instance.Load(Paths.RES_UISOUND + "Hero", typeof(AudioClip), this);
-        ResourcesManager.Instance.Load(Paths.RES_UISOUND + "EnterGame", typeof(AudioClip), this);
-        ResourcesManager.Instance.Load(Paths.RES_UISOUND + "Click", typeof(AudioClip), this);
+        bgmAudioClip = ResourcesManager.Instance.GetAsset(Paths.RES_UISOUND + "Hero") as AudioClip;
+        enterAudioClip = ResourcesManager.Instance.GetAsset(Paths.RES_UISOUND + "EnterGame") as AudioClip;
+        clickAudioClip = ResourcesManager.Instance.GetAsset(Paths.RES_UISOUND + "Click") as AudioClip;
+
+        SoundManager.Instance.PlayBGM(bgmAudioClip);
     }
 
     public override void OnDestory()
@@ -107,31 +110,6 @@ public class AccountView : UIBase,IResourceListener {
     }
     #endregion
 
-
-
-
-    /// <summary>
-    /// 加载回调
-    /// </summary>
-    /// <param name="assetPath"></param>
-    /// <param name="asset"></param>
-    public void OnLoaded(string assetPath, object asset)
-    {
-        AudioClip clip = asset as AudioClip;
-        switch (assetPath)
-        {
-            case Paths.RES_UISOUND + "Hero":
-                bgmAudioClip = clip;
-                SoundManager.Instance.PlayBGM(bgmAudioClip);
-                break;
-            case Paths.RES_UISOUND + "EnterGame":
-                enterAudioClip = clip;
-                break;
-            case Paths.RES_UISOUND + "Click":
-                clickAudioClip = clip;
-                break;
-        }
-    }
     /// <summary>
     /// 播放点击音效
     /// </summary>

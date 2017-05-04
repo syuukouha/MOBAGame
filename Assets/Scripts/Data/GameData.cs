@@ -5,4 +5,6 @@
 public class GameData
 {
     public static PlayerDto Player;
+    public static BaseController MyController;
+
 }

@@ -66,7 +66,7 @@ public class MainView : UIBase
         return Paths.RES_UIMain;
     }
 
-    public override void Init()
+    void Start()
     {
         clickAudioClip = ResourcesManager.Instance.GetAsset(Paths.RES_UISOUND + "Click") as AudioClip;
         //添加按键监听
@@ -74,11 +74,6 @@ public class MainView : UIBase
         //向服务器发起获取角色信息的请求
         PhotonManager.Instance.Request(OperationCode.PlayerCode, OpPlayer.GetPlayerInfo);
     }
-
-    public override void OnDestory()
-    {
-
-    } 
     #endregion
     #region 创建模块
 
@@ -190,6 +185,8 @@ public class MainView : UIBase
     public void OnStartMatch(bool isSingle)
     {
         SoundManager.Instance.PlaySE(clickAudioClip);
+        SingleMatchInteractable = false;
+        MultiMatchInteractable = false;
         if (isSingle)
         {
             //发起请求
@@ -211,6 +208,8 @@ public class MainView : UIBase
     public void OnStopMatch()
     {
         SoundManager.Instance.PlaySE(clickAudioClip);
+        SingleMatchInteractable = true;
+        MultiMatchInteractable = true;
         //发起请求
         PhotonManager.Instance.Request(OperationCode.PlayerCode, OpPlayer.MatchStop, GameData.Player.ID);
         //关闭匹配面板
@@ -225,6 +224,8 @@ public class MainView : UIBase
         OnStopMatch();
         //显示匹配完成面板
         matchCompleteView.Show();
+        SingleMatchInteractable = false;
+        MultiMatchInteractable = false;
     }
 
     public void OnSureButtonClick()
@@ -234,6 +235,8 @@ public class MainView : UIBase
         UIManager.Instance.HideUI(Paths.RES_UIMain);
         //显示选人界面UI
         UIManager.Instance.ShowUI(Paths.RES_UISelect);
+        SingleMatchInteractable = true;
+        MultiMatchInteractable = true;
     }
     #endregion
 

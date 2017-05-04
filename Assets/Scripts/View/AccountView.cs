@@ -93,7 +93,7 @@ public class AccountView : UIBase
         return Paths.RES_UIAccount;
     }
 
-    public override void Init()
+    void Start()
     {
         bgmAudioClip = ResourcesManager.Instance.GetAsset(Paths.RES_UISOUND + "Hero") as AudioClip;
         enterAudioClip = ResourcesManager.Instance.GetAsset(Paths.RES_UISOUND + "EnterGame") as AudioClip;
@@ -102,7 +102,7 @@ public class AccountView : UIBase
         SoundManager.Instance.PlayBGM(bgmAudioClip);
     }
 
-    public override void OnDestory()
+    void OnDestroy()
     {
         bgmAudioClip = null;
         enterAudioClip = null;

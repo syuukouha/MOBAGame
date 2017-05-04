@@ -12,14 +12,10 @@ public abstract class UIBase : MonoBehaviour
     public abstract string UIName();
 
     protected CanvasGroup _canvasGroup;
-    /// <summary>
-    /// 初始化
-    /// </summary>
-    public abstract void Init();
 
     // Use this for initialization
-	void Awake () {
-		Init();
+	void Awake ()
+    {
 	    if (_canvasGroup == null)
 	        _canvasGroup = gameObject.AddComponent<CanvasGroup>();
 	    else
@@ -46,8 +42,4 @@ public abstract class UIBase : MonoBehaviour
         _canvasGroup.blocksRaycasts = false;
     }
 
-    /// <summary>
-    /// 销毁
-    /// </summary>
-    public abstract void OnDestory();
 }

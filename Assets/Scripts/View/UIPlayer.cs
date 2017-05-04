@@ -42,7 +42,7 @@ public class UIPlayer : MonoBehaviour
             if (selectModel.HeroID != -1) //-1代表没有选择英雄
             {
                 //更新选择英雄头像
-                headImage.sprite = ResourcesManager.Instance.GetAsset(Paths.RES_UIHeroHead +HeroData.GetHeroModel(selectModel.HeroID).Name) as Sprite;
+                headImage.sprite = ResourcesManager.Instance.GetAsset(Paths.RES_UIHeroHead +HeroData.GetHeroDataModel(selectModel.HeroID).Name) as Sprite;
             }
             else
             {

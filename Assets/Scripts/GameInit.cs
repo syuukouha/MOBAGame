@@ -13,6 +13,10 @@ public class GameInit : MonoBehaviour,IResourceListener
         ResourcesManager.Instance.Load(Paths.RES_UISOUND + "Hero", typeof(AudioClip), this);
         ResourcesManager.Instance.Load(Paths.RES_UISOUND + "EnterGame", typeof(AudioClip), this);
         ResourcesManager.Instance.Load(Paths.RES_UISOUND + "Click", typeof(AudioClip), this);
+        ResourcesManager.Instance.Load(Paths.RES_UISOUND + "Ready", typeof(AudioClip), this);
+        ResourcesManager.Instance.Load(Paths.RES_UISOUND + "Select", typeof(AudioClip), this);
+        ResourcesManager.Instance.Load(Paths.RES_UISOUND + "CountDown", typeof(AudioClip), this);
+
         ResourcesManager.Instance.Load(Paths.RES_SOUND_SelectHero + "狐狸", typeof(AudioClip), this);
         ResourcesManager.Instance.Load(Paths.RES_SOUND_SelectHero + "瞎子", typeof(AudioClip), this);
         //加载头像资源

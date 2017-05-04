@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MOBACommon.Codes;
 using MOBACommon.Config;
+using MOBACommon.Dto;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,13 +22,13 @@ public class UIHero : MonoBehaviour
 	    heroID = -1;
 	}
 
-    public void InitView(HeroModel heroModel)
+    public void InitView(HeroDataModel heroDataModel)
     {
         //保存ID
-        this.heroID = heroModel.ID;
+        this.heroID = heroDataModel.ID;
         //获取头像和声音
-        heroAudioClip = ResourcesManager.Instance.GetAsset(Paths.RES_SOUND_SelectHero + heroModel.Name) as AudioClip;
-        headSprite = ResourcesManager.Instance.GetAsset(Paths.RES_UIHeroHead + heroModel.Name) as Sprite;
+        heroAudioClip = ResourcesManager.Instance.GetAsset(Paths.RES_SOUND_SelectHero + heroDataModel.Name) as AudioClip;
+        headSprite = ResourcesManager.Instance.GetAsset(Paths.RES_UIHeroHead + heroDataModel.Name) as Sprite;
         //更新头像
         headImage.sprite = headSprite;
     }
@@ -50,6 +51,8 @@ public class UIHero : MonoBehaviour
     /// </summary>
     private void OnHeroClick()
     {
+        //播放音效
+        SoundManager.Instance.PlaySE(ResourcesManager.Instance.GetAsset(Paths.RES_UISOUND + "Select") as AudioClip);
         SoundManager.Instance.PlaySE(heroAudioClip);
         //发起选人的请求
         PhotonManager.Instance.Request(OperationCode.SelectCode, OpSelect.Select, heroID);

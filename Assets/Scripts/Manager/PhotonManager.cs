@@ -51,6 +51,20 @@ public class PhotonManager : Singleton<PhotonManager>,IPhotonPeerListener
             return _selectReceiver;
         }
     }
+    /// <summary>
+    /// 战斗
+    /// </summary>
+    private BattleReceiver _battleReceiver;
+
+    public BattleReceiver BattleReceiver
+    {
+        get
+        {
+            if (_battleReceiver == null)
+                _battleReceiver = FindObjectOfType<BattleReceiver>();
+            return _battleReceiver;
+        }
+    }
     #endregion
     /// <summary>
     /// 代表客户端
@@ -76,6 +90,8 @@ public class PhotonManager : Singleton<PhotonManager>,IPhotonPeerListener
         base.Awake();
         peer = new PhotonPeer(this, protocol);
         peer.Connect(serverAddress, applicationName);
+        //切换场景不销毁该物体
+        DontDestroyOnLoad(gameObject);
     }
     	
 	// Update is called once per frame
@@ -140,6 +156,9 @@ public class PhotonManager : Singleton<PhotonManager>,IPhotonPeerListener
                 break;
             case OperationCode.SelectCode:
                 SelectReceiver.OnReceive(subCode, operationResponse);
+                break;
+            case OperationCode.BattleCode:
+                BattleReceiver.OnReceive(subCode, operationResponse);
                 break;
 
         }

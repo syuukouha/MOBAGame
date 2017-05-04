@@ -25,6 +25,10 @@ public class SelectView : UIBase
     private float timer;
     private bool timerStart;
 
+    [Header("Chat")]
+    [SerializeField]
+    private ChatView chatView;
+
     //缓存
     private Dictionary<int,UIHero> uiHeroes = new Dictionary<int, UIHero>();
 
@@ -34,6 +38,11 @@ public class SelectView : UIBase
         if (timerStart)
         {
             timer -= Time.deltaTime;
+            if ((int)timer == 10)
+            {
+                SoundManager.Instance.PlaySE(
+                    ResourcesManager.Instance.GetAsset(Paths.RES_UISOUND + "CountDown") as AudioClip, false);
+            }
             if (timer < 0)
             {
                 timer = 0;
@@ -53,7 +62,7 @@ public class SelectView : UIBase
         return Paths.RES_UISelect;
     }
 
-    public override void Init()
+    void Start()
     {
         sureButton.onClick.AddListener(OnSureButtonClick);
     }
@@ -64,12 +73,9 @@ public class SelectView : UIBase
         //发起进入房间的请求
         PhotonManager.Instance.Request(OperationCode.SelectCode, OpSelect.Enter);
         timerStart = false;
+        chatView.Clear();
     }
 
-    public override void OnDestory()
-    {
-
-    } 
     #endregion
     /// <summary>
     /// 更新试图显示
@@ -179,7 +185,7 @@ public class SelectView : UIBase
                 continue;
             hero = Instantiate(heroPrefab);
             UIHero uiHero = hero.GetComponent<UIHero>();
-            uiHero .InitView(HeroData.GetHeroModel(heroIDs[i]));
+            uiHero .InitView(HeroData.GetHeroDataModel(heroIDs[i]));
             hero.transform.SetParent(heroPanel.transform);
             hero.transform.localScale = Vector3.one;
             uiHeroes.Add(heroIDs[i], uiHero);
@@ -193,7 +199,16 @@ public class SelectView : UIBase
     private void OnSureButtonClick()
     {
         sureButton.interactable = false;
+        SoundManager.Instance.PlaySE(ResourcesManager.Instance.GetAsset(Paths.RES_UISOUND + "Ready") as AudioClip);
         //给服务器发送准备请求
         PhotonManager.Instance.Request(OperationCode.SelectCode, OpSelect.Ready);
+    }
+    /// <summary>
+    /// 更新聊天显示
+    /// </summary>
+    /// <param name="str"></param>
+    public void UpdateChatView(string str)
+    {
+        chatView.UpdateChatText(str);
     }
 }

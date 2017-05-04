@@ -6,6 +6,7 @@ using LitJson;
 using MOBACommon.Codes;
 using MOBACommon.Dto;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SelectReceiver :MonoBehaviour,IReceiver
 {
@@ -45,8 +46,24 @@ public class SelectReceiver :MonoBehaviour,IReceiver
             case OpSelect.Ready:
                 OnReady((int)response[0]);
                 break;
+            case OpSelect.Chat:
+                OnChat(response[0].ToString());
+                break;
+            case OpSelect.StartBattle:
+                SceneManager.LoadScene("Battle");
+                break;
         }
     }
+
+    /// <summary>
+    /// 更新聊天
+    /// </summary>
+    /// <param name="str"></param>
+    private void OnChat(string str)
+    {
+        selectView.UpdateChatView(str);
+    }
+
     /// <summary>
     /// 玩家准备
     /// </summary>
@@ -108,7 +125,7 @@ public class SelectReceiver :MonoBehaviour,IReceiver
         //隐藏选人界面
         UIManager.Instance.HideUI(Paths.RES_UISelect);
         //显示主界面
-        UIManager.Instance.ShowUI(Paths.RES_UIMain);
+        UIManager.Instance.ShowUI(Paths.RES_UIMain); 
     }
 
     /// <summary>

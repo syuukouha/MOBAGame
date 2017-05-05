@@ -15,7 +15,9 @@ public class BaseController : MonoBehaviour
     public SoldierModel Model { get; set; }
     [SerializeField]
     protected AnimationConroller animationController;
+    [SerializeField]
     protected HpController hpController;
+    [SerializeField]
     protected NavMeshAgent agent;
     public void Init(SoldierModel model,bool isFriendly)
     {
@@ -51,6 +53,7 @@ public class BaseController : MonoBehaviour
     public void Move(Vector3 point)
     {
         point.y = transform.position.y;
+        agent.enabled = true;
         //寻路
         agent.ResetPath();
         agent.SetDestination(point);
@@ -81,6 +84,7 @@ public class BaseController : MonoBehaviour
         //检测寻路是否终止
         if(animationController.animState == AnimationConroller.AnimState.WALK && !IsMoving)
         {
+            agent.enabled = false;
             animationController.Free();
         }
     }

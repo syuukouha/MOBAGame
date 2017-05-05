@@ -26,4 +26,8 @@ public class HpController : MonoBehaviour {
     {
         hpBar.value = value;
     }
+    private void LateUpdate()
+    {
+        transform.forward = Camera.main.transform.forward;
+    }
 }

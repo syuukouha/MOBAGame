@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Receiver;
 using ExitGames.Client.Photon;
@@ -21,7 +22,6 @@ public class BattleReceiver : MonoBehaviour,IReceiver
     [SerializeField]
     private GameObject[] blueTeamBuilds;
 
-
     //缓存
     private HeroModel[] _heroModels;
     private BuildModel[] _buildModels;
@@ -41,7 +41,15 @@ public class BattleReceiver : MonoBehaviour,IReceiver
                 OnGetInfo(JsonMapper.ToObject<HeroModel[]>(response[0].ToString()),
                     JsonMapper.ToObject<BuildModel[]>(response[1].ToString()));
                 break;
+            case OpBattle.Walk:
+                OnWalk((int)response[0], (float)response[1], (float)response[2], (float)response[3]);
+                break;
         }
+    }
+
+    private void OnWalk(int playerID, float x, float y, float z)
+    {
+        _createControllers[playerID].Move(new Vector3(x, y, z));
     }
 
     private void OnGetInfo(HeroModel[] heroModels, BuildModel[] buildModels)
@@ -85,6 +93,7 @@ public class BattleReceiver : MonoBehaviour,IReceiver
                 GameData.MyController = controller;
                 //初始化UI
                 battleView.InitView(heroModel);
+                Camera.main.GetComponent<CameraController>().FocusHero();          
             }
         }
         #endregion
@@ -103,11 +112,11 @@ public class BattleReceiver : MonoBehaviour,IReceiver
                 createGameObject = blueTeamBuilds[(buildModel.TypeID - 1)];
                 createGameObject.SetActive(true);
             }
-            //初始化控制器
-            BaseController controller = createGameObject.GetComponent<BaseController>();
-            controller.Init(buildModel, buildModel.TeamID == myTeamID);
-            //添加到字典
-            _createControllers.Add(buildModel.ID, controller);
+            ////初始化控制器
+            //BaseController controller = createGameObject.GetComponent<BaseController>();
+            //controller.Init(buildModel, buildModel.TeamID == myTeamID);
+            ////添加到字典
+            //_createControllers.Add(buildModel.ID, controller);
         } 
         #endregion
 

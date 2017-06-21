@@ -19,9 +19,9 @@ public class UIPlayer : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-	    nameText = transform.FindChild("PlayerNameText").GetComponent<Text>();
-	    stateText = transform.FindChild("StateText").GetComponent<Text>();
-	    headImage = transform.FindChild("HeroHead").GetComponent<Image>();
+	    nameText = transform.Find("PlayerNameText").GetComponent<Text>();
+	    stateText = transform.Find("StateText").GetComponent<Text>();
+	    headImage = transform.Find("HeroHead").GetComponent<Image>();
 	    bgImage = GetComponent<Image>();
 
 	    noConnectSprite = ResourcesManager.Instance.GetAsset(Paths.RES_UIHeroHead + "noConnect") as Sprite;

@@ -14,9 +14,9 @@ public class ChatView : MonoBehaviour
     // Use this for initialization
 	void Awake ()
 	{
-	    chatInputField = transform.FindChild("ChatInputField").GetComponent<InputField>();
-	    sendButton = transform.FindChild("SendButton").GetComponent<Button>();
-	    scrollbar = transform.FindChild("Scrollbar").GetComponent<Scrollbar>();
+	    chatInputField = transform.Find("ChatInputField").GetComponent<InputField>();
+	    sendButton = transform.Find("SendButton").GetComponent<Button>();
+	    scrollbar = transform.Find("Scrollbar").GetComponent<Scrollbar>();
 	    sendButton.onClick.AddListener(OnSendClick);
 	}
     /// <summary>

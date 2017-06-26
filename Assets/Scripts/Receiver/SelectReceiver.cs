@@ -125,7 +125,7 @@ public class SelectReceiver :MonoBehaviour,IReceiver
         //隐藏选人界面
         UIManager.Instance.HideUI(Paths.RES_UISelect);
         //显示主界面
-        UIManager.Instance.ShowUI(Paths.RES_UIMain); 
+        UIManager.Instance.ShowUI(Paths.RES_UIMain);
     }
 
     /// <summary>

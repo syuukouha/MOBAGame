@@ -10,12 +10,28 @@ public class MatchCompleteView : MonoBehaviour
 
     private float timer;
     private bool timerStart;
-	// Use this for initialization
-	void Start ()
+    private bool isHide;
+
+    public bool IsHide
+    {
+        get
+        {
+            return isHide;
+        }
+
+        set
+        {
+            isHide = value;
+        }
+    }
+
+    // Use this for initialization
+    void Start ()
 	{
 	    timer = 10.0f;
 	    timerStart = false;
 	    gameObject.SetActive(false);
+        isHide = false;
 	}
 	
 	// Update is called once per frame
@@ -38,10 +54,11 @@ public class MatchCompleteView : MonoBehaviour
         timerStart = true;
     }
 
-    public void Hide()
+    private void Hide()
     {
         timer = 10;
         timerStart = false;
         gameObject.SetActive(false);
+        isHide = true;
     }
 }

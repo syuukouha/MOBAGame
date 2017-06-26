@@ -74,6 +74,15 @@ public class MainView : UIBase
         //向服务器发起获取角色信息的请求
         PhotonManager.Instance.Request(OperationCode.PlayerCode, OpPlayer.GetPlayerInfo);
     }
+    void Update()
+    {
+        if (matchCompleteView.IsHide)
+        {
+            matchCompleteView.IsHide = false;
+            SingleMatchInteractable = true;
+            MultiMatchInteractable = true;
+        }
+    }
     #endregion
     #region 创建模块
 
